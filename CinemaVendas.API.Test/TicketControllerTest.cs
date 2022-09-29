@@ -3,6 +3,7 @@ using CinemaVendas.Core.Models;
 using CinemaVendas.Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -55,5 +56,16 @@ namespace CinemaVendas.API.Test
             var tickets = Assert.IsType<List<Ticket>>(okResult.Value);
             Assert.Empty(tickets);
         }
+
+        [Fact]
+        public void Ola_AoSerExecutado_RetornaMensagemEDiaAtual()
+        {
+            //Act
+            var result = _controller.Ola();
+
+            //Acert
+            Assert.Equal("Olá Mundo"+ DateTime.Now.Day);
+        }
     }
+
 }
